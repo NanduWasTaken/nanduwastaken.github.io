@@ -2,11 +2,13 @@
 
 
 
-<p align="left"> <a href="https://twitter.com/nanduwastaken" target="blank"><img src="https://img.shields.io/twitter/follow/nanduwastaken?logo=twitter&style=for-the-badge" alt="nanduwastaken" /></a> </p>
+
 
 - 🔭 I’m currently working on **Discord.js**
 
 - 📫 How to reach me **admin@toka.cf**
+
+- ✅ Currently Working on Project
 
 <h3 align="left">Connect with me:</h3>
 
