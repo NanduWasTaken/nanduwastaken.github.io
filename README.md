@@ -2,7 +2,7 @@
 
 
 
-
+<h3 align="left">About Me</h3>
 
 - 🔭 I’m currently working on **Discord.js**
 
