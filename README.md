@@ -1,5 +1,5 @@
 <h3 align="center">Hello I Am Nandu</h3>
-<script src="https://kit.fontawesome.com/5743939ddd.js" crossorigin="anonymous"></script>
+
 <h3 align="left">About Me</h3>
 
 - 🔭 I’m currently working on **Discord.js**
