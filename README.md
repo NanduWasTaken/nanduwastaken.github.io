@@ -1,6 +1,5 @@
 <h3 align="center">Hello I Am Nandu</h3>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=nanduwastaken&label=Profile%20views&color=0e75b6&style=flat" alt="nanduwastaken" /> </p>
 
 
 <p align="left"> <a href="https://twitter.com/nanduwastaken" target="blank"><img src="https://img.shields.io/twitter/follow/nanduwastaken?logo=twitter&style=for-the-badge" alt="nanduwastaken" /></a> </p>
