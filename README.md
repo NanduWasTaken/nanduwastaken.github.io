@@ -28,3 +28,13 @@
 <a href="https://discord.com/users/852381000528035890">Discord</a>
 
 <a href="https://twitter.com/@NanduWasTaken">Twitter</a>
+
+
+
+
+
+<p><img align="center"
+
+    src="https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true"
+
+    alt="NanduWasTaken" /></p>
