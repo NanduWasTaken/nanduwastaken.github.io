@@ -21,7 +21,7 @@
 ![MikeOwino's github stats](https://github-readme-stats.vercel.app/api?username=MikeOwino&count_private=true&show_icons=true&theme=highcontrast)
 
 
-    alt="adam-pw"
+ 
 
 <h3 align="left">Links</h3>
 
