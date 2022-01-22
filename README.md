@@ -1,3 +1,6 @@
+<img src="././5805410.jpg" alt="Nandu Background">
+
+
 <h3 align="center">Hello I Am Nandu</h3>
 
 <h3 align="left">About Me</h3>
