@@ -17,13 +17,11 @@
 
 
 <h3 align="left">Github Status</h3>
-<h3 align="left">Github Status</h3>
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=MikeOwino&layout=compact&theme=highcontrast)](https://github.com/mikeowino/)
 
 ![MikeOwino's github stats](https://github-readme-stats.vercel.app/api?username=MikeOwino&count_private=true&show_icons=true&theme=highcontrast)
 
 
-    alt="adam-pw" /></p>
+    alt="adam-pw"
 
 <h3 align="left">Links</h3>
 
