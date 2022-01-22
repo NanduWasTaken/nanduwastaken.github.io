@@ -1,4 +1,4 @@
-<img src="././5805410.jpg" alt="Nandu Background">
+<img src="20211002_125126.png" alt="Nandu Background">
 
 
 <h3 align="center">Hello I Am Nandu</h3>
