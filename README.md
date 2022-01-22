@@ -1,7 +1,7 @@
 <img src="20211002_125126.png" alt="Nandu Background">
 
 
-<h3 align="center">Hello I Am Nandu</h3>
+<h1 align="center">Hello I Am Nandu</h3>
 
 <h3 align="left">About Me</h3>
 
