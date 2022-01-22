@@ -1,4 +1,4 @@
-<img src="20211002_125126.png" alt="Nandu Background">
+//====Coded By Nandu====//
 
 
 <h1 align="center">Hello I Am Nandu</h3>
