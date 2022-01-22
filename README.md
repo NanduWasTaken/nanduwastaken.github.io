@@ -18,7 +18,11 @@
 
 <h3 align="left">Github Status</h3>
 <a href="https://github.com/NanduWasTaken/NanduWasTaken">
- ![Nandu's Status](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true)
+ <p><img align="center"
+
+    src="https://github-readme-stats.vercel.app/api/top-langs?username=adam-pw&show_icons=true&locale=en&layout=compact"
+
+    alt="adam-pw" /></p>
 </a>
 
 <h3 align="left">Links</h3>
@@ -33,8 +37,4 @@
 
 
 
-<p>
 
-    <img align="center"src="https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true"
-
-    alt="NanduWasTaken" /></p>
