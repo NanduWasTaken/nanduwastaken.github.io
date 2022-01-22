@@ -18,7 +18,7 @@
 
 <h3 align="left">Github Status</h3>
 <a href="https://github.com/NanduWasTaken/NanduWasTaken">
- ![Nandu's Status](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=dark&show_icons=true&?theme=THEME_NAME)
+ ![Nandu's Status](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true)
 </a>
 
 <h3 align="left">Links</h3>
