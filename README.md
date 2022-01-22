@@ -33,8 +33,8 @@
 
 
 
-<p><img align="center"
+<p>
 
-    src="https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true"
+    <img align="center"src="https://github-readme-stats.vercel.app/api?username=NanduWasTaken&theme=midnight-purple&show_icons=true"
 
     alt="NanduWasTaken" /></p>
