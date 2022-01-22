@@ -36,11 +36,3 @@
 
   <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&hide=java,html,tex&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21&langs_count=3" />
 
-</a>
-<a href="https://github.com/NanduWasTaken/NanduWasTaken">
-
-
-
- <img height="180em" src="https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=NanduWasTaken&layout=compact&exclude_lang=java+r&theme=vue-light" />
-</a>
-
