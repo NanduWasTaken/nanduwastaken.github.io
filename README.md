@@ -17,13 +17,13 @@
 
 
 <h3 align="left">Github Status</h3>
-<a href="https://github.com/NanduWasTaken/NanduWasTaken">
- <p><img align="center"
+
+<p><img align="center"
 
     src="https://github-readme-stats.vercel.app/api/top-langs?username=adam-pw&show_icons=true&locale=en&layout=compact"
 
     alt="adam-pw" /></p>
-</a>
+
 
 <h3 align="left">Links</h3>
 
