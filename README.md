@@ -12,7 +12,7 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 - 📫 How to reach me **admin@toka.cf**
 
-- ✅ Currently Working on Project
+- ✅ Currently Not Working on Project
 
 ## 📘 Language and Tool:
 
