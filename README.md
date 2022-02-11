@@ -1,4 +1,4 @@
-### 👋・Hi i'm Nandu
+# 👋・Hi i'm Nandu
 
 Welcome to my Github, I'm Nandu, a developer, self-taught beginner and passionate about IT.
 
