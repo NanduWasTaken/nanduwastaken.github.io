@@ -1,9 +1,9 @@
 
 
 
-<h1 align="center">Hello I Am Nandu</h3>
+## 👋・Hi i'm Nandu
 
-<h3 align="left">About Me</h3>
+## ⭐ About Me:
 
 - 🔭 I’m currently working on **Discord.js**
 
@@ -11,15 +11,26 @@
 
 - ✅ Currently Working on Project
 
-<h3 align="left">Languages and Tools:</h3>
+## 📘 Language and Tool:
 
-<p align="left"> <a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/> </a> <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> </a> <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/> </a> <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a> </p>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/javascript/javascript.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/node/node.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/python/python.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/git-scm/git-scm.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/hussainweb/hussainweb/main/icons/vscode.png"></code>
+<code><img height="25" src="https://github.com/hussainweb/hussainweb/raw/main/icons/mariadb.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/html/html.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/css/css.png"></code>
+<code><img height="25" src="https://cdn.worldvectorlogo.com/logos/npm-2.svg"></code>
+<code><img height="25" src="https://s3-us-west-2.amazonaws.com/assets.blog.serverless.com/express_js.png"></code>
+<code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/bootstrap/bootstrap.png"></code>   
+   
 
-
-<h3 align="left">Github Status</h3>
+<br><details>
+  <summary><b>My github statistics</b></summary>
 
 ![NanduWasTaken's github stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
-
+</details>
 
  
 
