@@ -34,7 +34,7 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 [![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)](https://github.com/NanduWasTaken/NanduWasTaken)
    
-[![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&theme=midnight-purple)](https://github.com/anuraghazra/github-readme-stats)
+[![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&layout=compact&theme=midnight-purple)](https://github.com/anuraghazra/github-readme-stats)
 </details>
 
  
