@@ -32,10 +32,8 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 <summary>:zap: GitHub Stats</summary>
 
-
-
-![NanduWasTaken's github stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
-
+![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
+[![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&layout=compact)](https://github.com/anuraghazra/github-readme-stats)
 </details>
 
  
