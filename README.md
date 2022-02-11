@@ -3,6 +3,9 @@
 
 ## 👋・Hi i'm Nandu
 
+Welcome to my Github, I'm Nandu, a developer, self-taught beginner and passionate about IT.
+By the way, I'm mainly "specialized" in web development and discord bots.
+
 ## ⭐ About Me:
 
 - 🔭 I’m currently working on **Discord.js**
@@ -25,15 +28,6 @@
 <code><img height="25" src="https://s3-us-west-2.amazonaws.com/assets.blog.serverless.com/express_js.png"></code>
 <code><img height="25" src="https://raw.githubusercontent.com/rahul-jha98/github_readme_icons/main/language_and_tools/square/bootstrap/bootstrap.png"></code>   
    
-
-<br><details>
-  <summary><b>My github statistics</b></summary>
-
-![NanduWasTaken's github stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
-</details>
-
- 
-
 <h3 align="left">Links</h3>
 
 <a href="https://replit.com/@NanduWasTaken">Replit</a>
@@ -43,7 +37,11 @@
 <a href="https://twitter.com/@NanduWasTaken">Twitter</a>
 
 
+<br><details>
+  <summary><b>My github statistics</b></summary>
 
+![NanduWasTaken's github stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
+</details>
 
-
+ 
 
