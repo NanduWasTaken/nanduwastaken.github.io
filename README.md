@@ -30,7 +30,7 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 <br><details>
 
-<summary><h4>My github statistics</h4></summary>
+<summary><b>My github statistics</b></summary>
 
 ![NanduWasTaken's github stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)
 
