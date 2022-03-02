@@ -18,11 +18,11 @@ By the way, I'm mainly "specialized" in web development and discord bots.
     
 ## 🔗 Links
 
-<a href="https://replit.com/@NanduWasTaken">Replit</a>
+- <a href="https://replit.com/@NanduWasTaken">Replit</a>
 
-<a href="https://discord.com/users/852381000528035890">Discord</a>
+- <a href="https://discord.com/users/852381000528035890">Discord</a>
 
-<a href="https://twitter.com/@NanduWasTaken">Twitter</a>
+- <a href="https://twitter.com/@NanduWasTaken">Twitter</a>
 
 <br><details>
 
