@@ -1,4 +1,4 @@
-# 👋・Hi i'm Nandu
+<h1 align="center">👋・Hi i'm Nandu</h1>
 
 Welcome to my Github, I'm Nandu, a developer,
 self-taught beginner and passionate about IT.
@@ -6,9 +6,9 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 ## ⭐ About Me:
 
-- 🔭 I’m currently working on **Discord.js**
+- 🔭 I’m currently working on **Web Developing**
 
-- 📫 How to reach me **admin@toka.cf**
+- 📫 How to reach me **nandu@nanduwastaken.tech**
 
 - ✅ Currently Not Working on Project
 
