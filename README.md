@@ -8,7 +8,7 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 
 - 🔭 I’m currently working on **Web Developing**
 
-- 📫 How to reach me **nandu@nanduwastaken.tech**
+- 📫 How to reach me nanduwastaken@gmail.com
 
 - ✅ Currently Not Working on Project
 
