@@ -33,5 +33,9 @@ By the way, I'm mainly "specialized" in web development and discord bots.
 [![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&layout=compact&theme=midnight-purple)](https://github.com/anuraghazra/github-readme-stats)
 </details>
 
+# Activity
+
+[![Discord Presence](https://lanyard-profile-readme.vercel.app/api/852381000528035890)](https://discord.com/users/852381000528035890)
+
  
 
