@@ -2,7 +2,7 @@
 
 Welcome to my Github, I'm Nandu, a developer,
 self-taught beginner and passionate about IT.
-By the way, I'm mainly "specialized" in web development and discord bots.
+By the way, I'm mainly "specialized" in web development and node.js.
 
 ## ⭐ About Me:
 
