@@ -29,7 +29,7 @@ By the way, I'm mainly "specialized" in web development and node.js.
 ## ⚙️ Activity
 
 
-[![Discord Presence](https://lanyard-profile-readme.vercel.app/api/852381000528035890?borderRadius=30px)](https://discord.com/users/852381000528035890)
+[![Discord Presence](https://lanyard-profile-readme.vercel.app/api/852381000528035890?borderRadius=30px&idleMessage=Probably%20Sleeping!)](https://discord.com/users/852381000528035890)
 
  
 
