@@ -6,7 +6,7 @@ By the way, I'm mainly "specialized" in web development and node.js.
 
 ## ⭐ About Me:
 
-- 🔭 I’m currently working on **Web Developing**
+- 🔭 I’m currently working on **Nothing!**
 
 - 📫 How to reach me nandubussines@gmail.com
 
