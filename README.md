@@ -8,7 +8,9 @@ By the way, I'm mainly "specialized" in web development and node.js.
 
 - 🔭 I’m currently working on **Nothing!**
 
-- 📫 How to reach me [Here](https://discord.com/channels/user/852381000528035890)
+- 📫 How to reach me [Here](https://tinyurl.com/NanduWasTaken)
+
+
 
 - ✅ Currently Not Working on Project
 
