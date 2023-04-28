@@ -8,7 +8,7 @@ By the way, I'm mainly "specialized" in web development and node.js.
 
 - 🔭 I’m currently working on **Nothing!**
 
-- 📫 How to reach me nandubussines@gmail.com
+- 📫 How to reach me [Here](https://discord.com/channels/user/852381000528035890)
 
 - ✅ Currently Not Working on Project
 
