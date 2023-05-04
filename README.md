@@ -2,7 +2,7 @@
 
 Welcome to my Github, I'm Nandu, a developer,
 self-taught beginner and passionate about IT.
-By the way, I'm mainly "specialized" in javascript and phython.
+By the way, I'm mainly "specialized" in javascript and python.
 
 ## ⭐ About Me:
 
