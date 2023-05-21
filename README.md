@@ -6,13 +6,13 @@ By the way, I'm mainly "specialized" in javascript and python.
 
 ## ⭐ About Me:
 
-- 🔭 I’m currently working on **Nothing!**
+- 🔭 I’m currently working on **Secret!**
 
 - 📫 How to reach me [Here](https://tinyurl.com/NanduWasTaken)
 
 
 
-- ✅ Currently Not Working on Project
+- ✅ Currently Working on Secret Stuff!
 
 ## 📘 Language and Tool:
 
