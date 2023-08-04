@@ -29,7 +29,7 @@ By the way, I'm mainly "specialized" in javascript and python.
 ## ⚙️ Activity
 
 
-[![Discord Presence](https://lanyard-profile-readme.vercel.app/api/852381000528035890?borderRadius=20px&idleMessage=Probably%20Playing!)](https://discord.com/users/852381000528035890)
+[![Discord Presence](https://lanyard-profile-readme.vercel.app/api/852381000528035890?borderRadius=10px&idleMessage=Probably%20Playing!)](https://discord.com/users/852381000528035890)
 
  
 
