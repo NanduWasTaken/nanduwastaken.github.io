@@ -34,7 +34,7 @@ By the way, I'm mainly "specialized" in javascript and python.
  
 
 
-<br>
+
 <details>
     
 <summary>GitHub Stats</summary>
@@ -46,5 +46,5 @@ By the way, I'm mainly "specialized" in javascript and python.
 [![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api/top-langs/?username=NanduWasTaken&layout=compact&theme=midnight-purple)](https://github.com/NanduWasTaken)
 
 </details>
-</br>
+
 
