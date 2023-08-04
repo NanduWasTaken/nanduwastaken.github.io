@@ -35,10 +35,8 @@ By the way, I'm mainly "specialized" in javascript and python.
 
 
 
-<br><details>
-
-   
-
+<details>
+    
 <summary>GitHub Stats</summary>
 
 [![NanduWasTaken's Github Stats](https://github-readme-stats.vercel.app/api?username=NanduWasTaken&count_private=true&show_icons=true&theme=midnight-purple)](https://github.com/NanduWasTaken/NanduWasTaken)
