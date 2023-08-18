@@ -2,8 +2,7 @@ name: Sync Files
 on:
   push:
     branches:
-      - master
-  workflow_dispatch:
+      - main
 jobs:
   sync:
     runs-on: ubuntu-latest
