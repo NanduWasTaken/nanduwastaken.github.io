@@ -48,3 +48,7 @@ By the way, I'm mainly "specialized" in javascript and python.
 </details>
 
 
+
+
+
+
