@@ -1,0 +1,75 @@
+- name: Repo File Sync Action
+  # You may pin to the exact commit or the version.
+  # uses: BetaHuhn/repo-file-sync-action@3023dac7ce66c18b119e2012348437eadeaea116
+  uses: BetaHuhn/repo-file-sync-action@v1.21.0
+  with:
+    # GitHub Personal Access Token to use to get repos and write secrets
+
+    GH_PAT: ${{ secrets.GH_PAT }} # optional
+    # GitHub App Installation Token to used to access repos
+
+    GH_INSTALLATION_TOKEN: # optional
+    # The path for the sync configuration file
+
+    CONFIG_PATH: # optional
+    # Label GH_PAT as a fine grained token
+
+    IS_FINE_GRAINED: # optional
+    # Labels which will be added to the pull request. Defaults to sync. Set to false to turn off
+
+    PR_LABELS: # optional
+    # Additional content to add in the PR description. Defaults to ''
+
+    PR_BODY: # optional
+    # Users to assign to the pull request. Defaults to none
+
+    ASSIGNEES: # optional
+    # Users to request a review of the pull request from. Defaults to none
+
+    REVIEWERS: # optional
+    # Teams to request a review of the pull request from. Defaults to none
+
+    TEAM_REVIEWERS: # optional
+    # Prefix for commit message and pull request title. Defaults to 🔄
+
+    COMMIT_PREFIX: # optional
+    # Commit message body. Will be appended to commit message, separated by two line returns. Defaults to ''
+
+    COMMIT_BODY: # optional
+    # Commit each file seperately. Defaults to true
+
+    COMMIT_EACH_FILE: # optional
+    # The e-mail address used to commit the synced files. Defaults to the email of the GitHub PAT
+
+    GIT_EMAIL: # optional
+    # The username used to commit the synced files. Defaults to the username of the GitHub PAT
+
+    GIT_USERNAME: # optional
+    # The working directory where all sync operations will be done. Defaults to `tmp-${Date.now().toString()}`
+
+    TMP_DIR: # optional
+    # Run everything except for nothing will be updated. Defaults to false
+
+    DRY_RUN: # optional
+    # Skip removing the temporary directory (useful for debugging). Defaults to false
+
+    SKIP_CLEANUP: # optional
+    # Overwrite any existing Sync PR with the new changes. Defaults to true
+
+    OVERWRITE_EXISTING_PR: # optional
+    # Re-use the original commit message for commits. Works only if the action is triggered by pushing one commit. Defaults to false
+
+    ORIGINAL_MESSAGE: # optional
+    # Re-use the commit message as PR title. Works only if ORIGINAL_MESSAGE is on and PR has one commit. Defaults to false
+
+    COMMIT_AS_PR_TITLE: # optional
+    # Skips creating a Pull Request and pushes directly to the default branch. Defaults to false
+
+    SKIP_PR: # optional
+    # Specify a different prefix for the new branch in the target repo. Defaults to repo-sync/SOURCE_REPO_NAME
+
+    BRANCH_PREFIX: # optional
+    # Specify the user account that will be used in a fork and pull-request workflow. Defaults
+false.
+
+    FORK: # optional
