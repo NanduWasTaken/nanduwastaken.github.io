@@ -6,7 +6,7 @@ By the way, I'm mainly "specialized" in javascript and python.
 
 ## ⭐ About Me:
 
-- 🔭 I’m currently learning on **Secret!**
+- 🔭 I’m currently learning **Secret Stuff!**
 
 - 📫 How to reach me [Here](https://tinyurl.com/NanduWasTaken)
 
