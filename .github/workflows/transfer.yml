@@ -3,7 +3,7 @@ name: transfer
 on:
   push:
     paths:
-      - 'nanduwastaken.github.io/' # Update with the actual path
+      - 'nanduwastaken.github.io/README.md' # Update with the actual path
 
 jobs:
   sync-files:
