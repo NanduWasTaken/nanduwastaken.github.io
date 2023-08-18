@@ -1,36 +1,13 @@
-name: transfer
-
-on:
-  push:
-    paths:
-      - 'nanduwastaken.github.io/README.md' # Update with the actual path
-
+name: learn-github-actions
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
 jobs:
-  sync-files:
+  check-bats-version:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository 1
-        uses: actions/checkout@v2
-
-      - name: Set Up Git
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor }}@users.noreply.github.com"
-
-      - name: Update Repository 2
-        run: |
-          # Clone Repository 2
-          git clone --depth=1 https://github.com/nanduwastaken/nanduwastaken.git temp_repo2
-          
-          # Replace the file in Repository 2 with the file from Repository 1
-          cp nanduwastaken.github.io/README.md temp_repo2/nanduwastaken/README.md
-          
-          # Commit and push changes to Repository 2
-          cd temp_repo2
-          git add .
-          git commit -m "Auto-update file from Repository 1"
-          git push origin main
-          
-      - name: Cleanup
-        run: rm -rf temp_repo2
-        
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
