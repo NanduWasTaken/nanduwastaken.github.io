@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/nanduwastaken/walnut-Discord-Bot">
+  <a href="/">
       <img 
       src="./assets/img/nanduwastaken.png" 
       alt="Nandu" 
