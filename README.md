@@ -22,21 +22,40 @@ By the way, I'm mainly "specialized" in javascript and python.
 
 - 🔭 I’m currently learning **Secret Stuff!**
 
-- 📫 How to reach me [Here](https://tinyurl.com/NanduWasTaken)
+- 📫 How to reach me [^-^](https://tinyurl.com/NanduWasTaken)
 
 - ✅ Currently Working on Secret Stuff!
 
-## 📘 Language and Tool:
 
-[![Language and Tool](https://skillicons.dev/icons?i=javascript,typescript,nodejs,python,html,css,mongodb,replit,express,github,bootstrap,react)](./)
-    
+## 📘 Skills:
+
+[![Language and Tool](https://skillicons.dev/icons?i=javascript,typescript,nodejs,python,html,css,mongodb,replit,express,github,bootstrap,react,nextjs,git)](./)
+
+
 ## 🔗 Links
 
-- <a href="https://replit.com/@NanduWasTaken">Replit</a>
+<a href="https://discord.com/users/852381000528035890" target="_blank" rel="noreferrer">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/profileme-dev/main/public/icons/socials/discord.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/profileme-dev/main/public/icons/socials/discord.svg" />
+    <img src="https://raw.githubusercontent.com/danielcranney/profileme-dev/main/public/icons/socials/discord.svg" alt="Discord" width="32" height="32" />
+  </picture>
+</a>
+<a href="https://www.github.com/nanduwastaken" target="_blank" rel="noreferrer">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" />
+    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" alt="GitHub" width="32" height="32" />
+  </picture>
+</a>
+<a href="https://www.x.com/nanduwastaken" target="_blank" rel="noreferrer">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" />
+    <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" alt="Twitter" width="32" height="32" />
+  </picture>
+</a>
 
-- <a href="https://discord.com/users/852381000528035890">Discord</a>
-
-- <a href="https://twitter.com/@NanduWasTaken">Twitter</a>
 
 
 
