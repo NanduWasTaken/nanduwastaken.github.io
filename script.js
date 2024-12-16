@@ -7,7 +7,6 @@ setTimeout(() => {
   // updateScroll();
 }, timeoutBase + 1100);
 
-document.getElementById('email-link').addEventListener("click", () => prompt("you can copy my email below: ", "nandubussines@gmail.com"))
 
 const getJSON = (url) => {
   return new Promise((resolve, reject) => {
