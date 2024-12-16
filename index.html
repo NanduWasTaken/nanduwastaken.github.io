@@ -1,65 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1em 0;
-        }
-        nav {
-            margin: 1em 0;
-        }
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: #4CAF50;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to My Simple Site</h1>
-    </header>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <main>
-        <h2 id="home">Home Section</h2>
-        <p>This is a simple HTML site with a header, navigation, main content, and footer.</p>
-        <h2 id="about">About Section</h2>
-        <p>This site demonstrates basic HTML and CSS structure for beginners.</p>
-        <h2 id="contact">Contact Section</h2>
-        <p>Feel free to reach out via email at <a href="mailto:example@example.com">example@example.com</a>.</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 Simple HTML Site. All rights reserved.</p>
-    </footer>
-</body>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Abdullah Khan</title>
+  </head>
+  <body>
+    <noscript>
+      <h1 class="size-limit-heading animated fadeIn margin-mid">hmm, if you came here to look at a blank page...</h1>
+      <h2 class="size-limit-text animated fadeIn margin-mid">you're in the right place!</h2>
+      <h4 class="size-limit-text animated fadeIn margin-max">if not, you might wanna enable JavaScript on here.<br>(I promise, no sneaky trackers or any of that stuff...)</h4>
+    </noscript>
+    <div id="links">
+      <p class="size-limit-nav"><a target="_blank" href="https://github.com/abdullah-K">GitHub</a><span class="dash">|</span></p>
+      <p class="size-limit-nav"><a target="_blank" href="https://codepen.io/abdullah-K">Codepen</a><span class="dash">|</span></p>
+      <p class="size-limit-nav"><a id="email-link" href="#">Email</a></p>
+    </div>
+    <div id="intro">
+      <h2 class="headline size-limit-heading hide" id="main-heading" data-text="Hello, stranger.">Hello, stranger.</h2>
+      <p class="size-limit-text hide" id="intro-text">Well, you aren't really<br>
+        a stranger to me,<span class="client-info" id="ip-address"></span>.<br>You're viewing this page using<span class="client-info" id="browser"></span><br class="line-break-intro">
+        on<span class="client-info" id="operating-system"></span>
+        from<span class="client-info" id="place"></span><br>
+      </p>
+      <h2 class="size-limit-heading hide glitch" id="about-me" data-text="I'm Abdullah.">I'm Abdullah.</h2>
+    </div>
+    <footer id="footer"><a id="footer-link" href="https://khanabdullah.com" target="_blank">
+        <div id="footer-content"><img id="footer-logo" src="https://raw.githubusercontent.com/abdullah-K/socketChat/a8bee4987b8a6dfe4585d9e49551223fd7fe789e/public/img/logo_bare.png" alt="Abdullah's logo"></div></a></footer>
+    <div id="bottom-background"></div>
+  </body>
 </html>
-  
