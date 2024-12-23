@@ -416,12 +416,20 @@ body {
   display: none !important;
 }
 
+#ufo-animation {
+    position: fixed;
+    top: 50%;
+    right: 5%; /* Adjust as needed for spacing */
+    transform: translateY(-50%);
+    z-index: 10; /* Ensure visibility above other elements */
+}
+
 .all {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 200px; /* Adjusted for better fit */
-    width: 200px; /* Adjusted for better fit */
+    height: 150px; /* Adjust size */
+    width: 150px;
 }
 
 .container {
@@ -439,7 +447,7 @@ body {
     border-radius: 100px;
     width: 100px;
     height: 100px;
-    transform: rotateY(0deg) rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .inner-oval {
@@ -456,8 +464,8 @@ body {
     border: 2px solid white;
     width: 10px;
     height: 10px;
-    border-radius: 50px;
-    animation: zoom 3s linear 0s infinite;
+    border-radius: 50%;
+    animation: zoom 3s linear infinite;
 }
 
 .circle2 {
@@ -474,5 +482,5 @@ body {
     }
     50% {
         background-color: white;
-  }
+    }
 }
