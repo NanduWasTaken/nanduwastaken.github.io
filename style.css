@@ -419,7 +419,7 @@ body {
 #ufo-animation {
     position: fixed;
     top: 50%;
-    right: 5px; /* Move it more to the right */
+    right: 50px; /* Move it more to the right */
     transform: translateY(-50%);
     z-index: 10; /* Ensure visibility above other elements */
 }
