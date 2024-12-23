@@ -415,3 +415,64 @@ body {
 .hide {
   display: none !important;
 }
+
+.all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px; /* Adjusted for better fit */
+    width: 200px; /* Adjusted for better fit */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.top {
+    margin-bottom: -53px;
+    margin-left: 23px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-bottom-color: transparent;
+    border-right-color: transparent;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    transform: rotateY(0deg) rotate(45deg);
+}
+
+.inner-oval {
+    align-items: center;
+    border: 2px solid white;
+    width: 150px;
+    height: 30px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.circle1, .circle2, .circle3 {
+    border: 2px solid white;
+    width: 10px;
+    height: 10px;
+    border-radius: 50px;
+    animation: zoom 3s linear 0s infinite;
+}
+
+.circle2 {
+    animation-delay: 1s;
+}
+
+.circle3 {
+    animation-delay: 2s;
+}
+
+@keyframes zoom {
+    0%, 100% {
+        background-color: black;
+    }
+    50% {
+        background-color: white;
+  }
+}
