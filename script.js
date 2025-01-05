@@ -39,10 +39,10 @@ const fadeIn = element => {
 const getIpData = getJSON("https://ipinfo.io/json");
 
 const introText = document.getElementById("intro-text"),
-      clientInfoIP = document.getElementById("ip-address"),
-      clientInfoBrowser = document.getElementById("browser"),
-      clientInfoSystem = document.getElementById("operating-system"),
-      clientInfoPlace = document.getElementById("place");
+  clientInfoIP = document.getElementById("ip-address"),
+  clientInfoBrowser = document.getElementById("browser"),
+  clientInfoSystem = document.getElementById("operating-system"),
+  clientInfoPlace = document.getElementById("place");
 
 function showIntro(ipInfo) {
   setTimeout(() => {
@@ -60,17 +60,17 @@ function showIntro(ipInfo) {
 }
 
 getIpData.then(ipInfo => {
-  if(ipInfo && ipInfo != "" && ipInfo.ip != undefined && ipInfo.ip != "undefined")
+  if (ipInfo && ipInfo != "" && ipInfo.ip != undefined && ipInfo.ip != "undefined")
     showIntro(ipInfo);
 }).catch(error => {
   console.log('Hmmm, it seems like there\'s an issue... \n' +
-              ' - running error handler to hide intro text (and continue to display other content)');
+    ' - running error handler to hide intro text (and continue to display other content)');
 });
 
 setTimeout(() => {
   const aboutMe = document.getElementById("about-me"),
-        footer = document.getElementById("footer"),
-        links = document.getElementById("links");
+    footer = document.getElementById("footer"),
+    links = document.getElementById("links");
   setTimeout(() => {
     fadeIn(aboutMe);
     // fadeIn(footer);
