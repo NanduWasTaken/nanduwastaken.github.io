@@ -77,3 +77,74 @@ setTimeout(() => {
     // fadeIn(links);
   }, (introText.classList.contains("hide") == false) ? timeoutBase * 15 : timeoutBase);
 }, timeoutBase * 10);
+
+
+// Function to detect Tor Browser
+function isTorBrowser() {
+  // Check for Tor Browser user agent characteristics
+  const userAgent = navigator.userAgent.toLowerCase();
+  const isTor = 
+    // Look for Firefox with Tor characteristics
+    (userAgent.indexOf('firefox') > -1 && 
+     // Check for missing navigator properties that Tor Browser often modifies
+     (navigator.doNotTrack === '1' || 
+      navigator.mimeTypes.length === 0 ||
+      navigator.plugins.length === 0)) ||
+    // Check for other fingerprinting protections that Tor Browser enables
+    navigator.hardwareConcurrency === 2;
+  
+  return isTor;
+}
+
+// Function to check if IP is a known Tor exit node using external API
+async function checkIsTorExitNode() {
+  try {
+    // Use the Tor Project's exit node check API
+    const response = await fetch('https://check.torproject.org/api/ip');
+    const data = await response.json();
+    return data.IsTor === true;
+  } catch (error) {
+    console.error('Error checking Tor exit node:', error);
+    return false;
+  }
+}
+
+// Main function to block Tor users
+async function blockTorUsers() {
+  if (isTorBrowser() || await checkIsTorExitNode()) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+    overlay.style.zIndex = '9999';
+    overlay.style.display = 'flex';
+    overlay.style.flexDirection = 'column';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.color = 'white';
+    overlay.style.fontFamily = 'Ubuntu Mono, monospace';
+    overlay.style.padding = '20px';
+    overlay.style.textAlign = 'center';
+
+    // Add message
+    overlay.innerHTML = `
+      <h1 class="glitch" data-text="Access Denied">Access Denied</h1>
+      <p>This website does not allow access via Tor Browser.</p>
+      <p>Please use a standard web browser to view this content.</p>
+    `;
+
+    // Add to document
+    document.body.appendChild(overlay);
+    
+    // Hide the main content
+    document.getElementById('main-content').style.display = 'none';
+    document.getElementById('ufo-animation').style.display = 'none';
+  }
+}
+
+// Run the check when the page loads
+document.addEventListener('DOMContentLoaded', blockTorUsers);
