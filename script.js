@@ -1,7 +1,12 @@
-// Base timing for animations
+/**
+ * Global constants and configurations
+ */
 const timeoutBase = 450;
+let isAnimationComplete = false;
 
-// DOM elements
+/**
+ * DOM elements
+ */
 const headline = document.getElementById("main-heading");
 const introText = document.getElementById("intro-text");
 const clientInfoIP = document.getElementById("ip-address");
@@ -12,35 +17,55 @@ const aboutMe = document.getElementById("about-me");
 const footer = document.getElementById("footer");
 const links = document.getElementById("links");
 
-// Initialize the page
-document.addEventListener('DOMContentLoaded', initPage);
-
-// Show the headline with animation
-setTimeout(() => {
-  headline.classList.remove("hide");
-  headline.classList.add("fadeIn", "animated", "glitch");
-}, timeoutBase + 1100);
+/**
+ * Initialize animations and data loading
+ */
+document.addEventListener('DOMContentLoaded', function() {
+  initializeHeadline();
+  loadClientData();
+  checkForTor();
+});
 
 /**
- * Fetch JSON data from a URL
- * @param {string} url - The URL to fetch from
- * @returns {Promise} - Promise containing the response
+ * Initialize the headline animation
  */
-function getJSON(url) {
+function initializeHeadline() {
+  setTimeout(() => {
+    headline.classList.remove("hide");
+    headline.classList.add("fadeIn", "animated", "glitch");
+  }, timeoutBase + 1100);
+}
+
+/**
+ * Load client data using the IP API
+ */
+function loadClientData() {
+  getIpData.then(ipInfo => {
+    if (ipInfo && ipInfo !== "" && ipInfo.ip !== undefined && ipInfo.ip !== "undefined") {
+      showIntro(ipInfo);
+    }
+  }).catch(error => {
+    console.log('Error loading IP data:', error);
+    showFallbackContent();
+  });
+}
+
+/**
+ * Utility function to fetch JSON data
+ * @param {string} url - URL to fetch JSON from
+ * @returns {Promise} - Promise with the JSON data
+ */
+const getJSON = (url) => {
   return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onload = () => {
-      const status = xhr.status;
-      if (status === 200) {
-        resolve(xhr.response);
-      } else {
-        reject({
-          status: xhr.status,
-          statusText: xhr.statusText,
-        });
-      }
+      let status = xhr.status;
+      status === 200 ? resolve(xhr.response) : reject({
+        status: xhr.status,
+        statusText: xhr.statusText,
+      });
     };
     xhr.onerror = () => {
       reject({
@@ -50,205 +75,208 @@ function getJSON(url) {
     };
     xhr.send();
   });
-}
+};
 
 /**
- * Apply fade-in animation to an element
- * @param {HTMLElement} element - DOM element to animate
+ * Utility function to fade in elements
+ * @param {HTMLElement} element - Element to fade in
  */
-function fadeIn(element) {
-  if (element) {
-    element.classList.remove("hide");
-    element.classList.add("fadeIn", "animated");
-  }
+const fadeIn = element => {
+  element.classList.remove("hide");
+  element.classList.add("fadeIn", "animated");
 }
 
 /**
- * Show user information in the intro text
- * @param {Object} ipInfo - Information about the user's IP
+ * Fetch IP data from API
+ */
+const getIpData = getJSON("https://ipinfo.io/json");
+
+/**
+ * Display intro text with client information
+ * @param {Object} ipInfo - Information about client's IP
  */
 function showIntro(ipInfo) {
   setTimeout(() => {
     fadeIn(introText);
     
-    // Set client IP
-    if (ipInfo && ipInfo.ip) {
-      clientInfoIP.textContent = ipInfo.ip;
-    } else {
-      clientInfoIP.textContent = "unknown";
-    }
-    
-    // Set browser and OS info using ClientJS
+    // Display client info
+    clientInfoIP.innerHTML = ipInfo.ip;
     const clientJS = new ClientJS();
     
-    // Fix Edge browser detection
-    if (/Edge\/\d+/i.test(navigator.userAgent)) {
-      clientInfoBrowser.textContent = "Edge";
+    // Handle Edge browser detection
+    if (/Edge\/12./i.test(navigator.userAgent)) {
+      clientInfoBrowser.innerHTML = "Edge";
     } else {
-      clientInfoBrowser.textContent = clientJS.getBrowser();
+      clientInfoBrowser.innerHTML = clientJS.getBrowser();
     }
     
-    // Set OS info
-    clientInfoSystem.textContent = clientJS.getOS();
+    clientInfoSystem.innerHTML = clientJS.getOS();
+    clientInfoPlace.innerHTML = ipInfo.city + "," + "\xa0" + ipInfo.country;
     
-    // Set location info
-    if (ipInfo && ipInfo.city && ipInfo.country) {
-      clientInfoPlace.textContent = `${ipInfo.city}, ${ipInfo.country}`;
-    } else {
-      clientInfoPlace.textContent = "unknown location";
-    }
+    // Show the "I'm Nandu" text only after client info is displayed
+    setTimeout(() => {
+      fadeIn(aboutMe);
+      
+      // Show footer and links after the "I'm Nandu" text
+      setTimeout(() => {
+        fadeIn(footer);
+        fadeIn(links);
+      }, timeoutBase * 3);
+      
+    }, 1500); // Small delay after client info appears
+    
   }, timeoutBase + 4000);
 }
 
 /**
- * Show about section after intro
+ * Show fallback content if IP data cannot be loaded
  */
-function showAboutSection() {
+function showFallbackContent() {
+  console.log('Running fallback content due to error loading IP data');
+  
   setTimeout(() => {
-    fadeIn(aboutMe);
-    fadeIn(footer);
-    fadeIn(links);
-  }, (introText.classList.contains("hide") === false) ? timeoutBase * 15 : timeoutBase);
+    fadeIn(introText);
+    
+    // Replace the spans with generic text
+    clientInfoIP.innerHTML = "anonymous visitor";
+    clientInfoBrowser.innerHTML = "your browser";
+    clientInfoSystem.innerHTML = "your device";
+    clientInfoPlace.innerHTML = "somewhere in the world";
+    
+    // Show the "I'm Nandu" text after a delay
+    setTimeout(() => {
+      fadeIn(aboutMe);
+      
+      // Show footer and links after the "I'm Nandu" text
+      setTimeout(() => {
+        fadeIn(footer);
+        fadeIn(links);
+      }, timeoutBase * 3);
+      
+    }, 1500);
+    
+  }, timeoutBase + 4000);
 }
 
 /**
- * Check if the user is using Tor Browser
- * @returns {boolean} - True if using Tor Browser
+ * Check if user is using Tor Browser
+ * @returns {boolean} - True if user is using Tor
  */
 function isTorBrowser() {
-  return navigator.userAgent.includes("Tor") || 
+  // Check for common Tor Browser fingerprints
+  const userAgent = navigator.userAgent.toLowerCase();
+  return userAgent.includes('tor') || 
          document.hidden !== undefined && 
-         /Firefox/.test(navigator.userAgent) &&
-         /rv:/.test(navigator.userAgent);
+         navigator.doNotTrack === "1" && 
+         window.screenX === 0 && 
+         (window.screen.width === 1000 && window.screen.height === 900 ||
+          window.outerWidth === 1000 && window.outerHeight === 900);
 }
 
 /**
- * Check if IP is a Tor exit node
+ * Check if IP address is a Tor exit node
  * @returns {Promise<boolean>} - True if IP is a Tor exit node
  */
 async function checkIsTorExitNode() {
   try {
-    const ipInfo = await getJSON("https://ipinfo.io/json");
-    // Here you would ideally check against a Tor exit node list
-    // For demo, we'll use a simplified check
-    return false; // Replace with actual implementation
+    const response = await fetch('https://check.torproject.org/exit-addresses');
+    if (response.ok) {
+      const text = await response.text();
+      const userIP = await getIpData.then(data => data.ip);
+      return text.includes(userIP);
+    }
   } catch (error) {
-    console.error("Error checking Tor exit node:", error);
-    return false;
+    console.error('Error checking Tor exit nodes:', error);
   }
+  return false;
 }
 
 /**
- * Block users using Tor Browser
+ * Main function to check and block Tor users
  */
-async function blockTorUsers() {
+async function checkForTor() {
   if (isTorBrowser() || await checkIsTorExitNode()) {
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'black';
-    overlay.style.zIndex = '9999';
-    overlay.style.display = 'flex';
-    overlay.style.flexDirection = 'column';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.color = 'white';
-    overlay.style.fontFamily = 'Ubuntu Mono, monospace';
-    overlay.style.padding = '20px';
-    overlay.style.textAlign = 'center';
-
-    // Add message with center-glitch class
-    overlay.innerHTML = `
-      <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
-      <p>This website does not allow access via Tor Browser.</p>
-      <p>Please use a standard web browser to view this content.</p>
-      <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">
-        Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>
-        If you believe this is an error, try disabling privacy features or using another browser.
-      </p>
-    `;
-
-    // Add custom CSS for the center-aligned glitch effect
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-      .center-glitch {
-        position: relative;
-        font-size: 5vw;
-        margin-bottom: 20px;
-      }
-      @media (max-width: 31.25em) {
-        .center-glitch {
-          font-size: 25px;
-        }
-      }
-      @media (min-width: 43.75em) {
-        .center-glitch {
-          font-size: 35px;
-        }
-      }
-      .center-glitch:before,
-      .center-glitch:after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        width: 100%;
-        background: black;
-        clip: rect(0, 900px, 0, 0);
-        overflow: hidden;
-      }
-      .center-glitch:after {
-        left: 4px;
-        text-shadow: 4px 0 #294ad8;
-        color: white;
-        animation: noise-anim 5s infinite linear alternate-reverse;
-      }
-      .center-glitch:before {
-        left: -4px;
-        text-shadow: -4px 0 #227131;
-        color: white;
-        animation: noise-anim-2 5s infinite linear alternate-reverse;
-      }
-    `;
-    document.head.appendChild(styleElement);
-
-    // Add to document
-    document.body.appendChild(overlay);
-    
-    // Hide the main content
-    document.getElementById('main-content').style.display = 'none';
-    document.getElementById('ufo-animation').style.display = 'none';
+    displayTorBlockScreen();
   }
 }
 
 /**
- * Initialize the page
+ * Display blocking screen for Tor users
  */
-function initPage() {
-  // Get IP data and show intro
-  const ipDataPromise = getJSON("https://ipinfo.io/json");
-  ipDataPromise
-    .then(ipInfo => {
-      if (ipInfo && ipInfo.ip) {
-        showIntro(ipInfo);
-      } else {
-        throw new Error("Invalid IP data");
+function displayTorBlockScreen() {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'black';
+  overlay.style.zIndex = '9999';
+  overlay.style.display = 'flex';
+  overlay.style.flexDirection = 'column';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.color = 'white';
+  overlay.style.fontFamily = 'Ubuntu Mono, monospace';
+  overlay.style.padding = '20px';
+  overlay.style.textAlign = 'center';
+
+  // Add message with center-glitch class
+  overlay.innerHTML = `
+    <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
+    <p>This website does not allow access via Tor Browser.</p>
+    <p>Please use a standard web browser to view this content.</p>
+    <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>If you believe this is an error, try disabling privacy features or use a different browser.</p>
+  `;
+
+  // Add custom CSS for the center-aligned glitch effect
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    .center-glitch {
+      position: relative;
+      font-size: 5vw;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 31.25em) {
+      .center-glitch {
+        font-size: 25px;
       }
-    })
-    .catch(error => {
-      console.error('Error loading IP data:', error);
-      // Show intro with default values
-      showIntro({});
-    });
+    }
+    @media (min-width: 43.75em) {
+      .center-glitch {
+        font-size: 35px;
+      }
+    }
+    .center-glitch:before,
+    .center-glitch:after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      width: 100%;
+      background: black;
+      clip: rect(0, 900px, 0, 0);
+      overflow: hidden;
+    }
+    .center-glitch:after {
+      left: 4px;
+      text-shadow: 4px 0 #294ad8;
+      color: white;
+      animation: noise-anim 5s infinite linear alternate-reverse;
+    }
+    .center-glitch:before {
+      left: -4px;
+      text-shadow: -4px 0 #227131;
+      color: white;
+      animation: noise-anim-2 5s infinite linear alternate-reverse;
+    }
+  `;
+  document.head.appendChild(styleElement);
 
-  // Show about section after delay
-  setTimeout(() => {
-    showAboutSection();
-  }, timeoutBase * 10);
-
-  // Check for Tor users
-  blockTorUsers();
+  // Add to document
+  document.body.appendChild(overlay);
+  
+  // Hide the main content
+  document.getElementById('main-content').style.display = 'none';
+  document.getElementById('ufo-animation').style.display = 'none';
 }
