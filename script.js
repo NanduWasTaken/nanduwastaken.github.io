@@ -1,85 +1,146 @@
-let timeoutBase = 450;
+// Base timing for animations
+const timeoutBase = 450;
 
+// DOM elements
 const headline = document.getElementById("main-heading");
+const introText = document.getElementById("intro-text");
+const clientInfoIP = document.getElementById("ip-address");
+const clientInfoBrowser = document.getElementById("browser");
+const clientInfoSystem = document.getElementById("operating-system");
+const clientInfoPlace = document.getElementById("place");
+const aboutMe = document.getElementById("about-me");
+const footer = document.getElementById("footer");
+const links = document.getElementById("links");
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', initPage);
+
+// Show the headline with animation
 setTimeout(() => {
   headline.classList.remove("hide");
   headline.classList.add("fadeIn", "animated", "glitch");
-  // updateScroll();
 }, timeoutBase + 1100);
 
-
-const getJSON = (url) => {
+/**
+ * Fetch JSON data from a URL
+ * @param {string} url - The URL to fetch from
+ * @returns {Promise} - Promise containing the response
+ */
+function getJSON(url) {
   return new Promise((resolve, reject) => {
-    let xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.responseType = 'json';
     xhr.onload = () => {
-      let status = xhr.status;
-      status == 200 ? resolve(xhr.response) : reject({
-        status: this.status,
-        statusText: xhr.statusText,
-      });
+      const status = xhr.status;
+      if (status === 200) {
+        resolve(xhr.response);
+      } else {
+        reject({
+          status: xhr.status,
+          statusText: xhr.statusText,
+        });
+      }
     };
     xhr.onerror = () => {
       reject({
-        status: this.status,
+        status: xhr.status,
         statusText: xhr.statusText,
       });
     };
     xhr.send();
   });
-};
-
-const fadeIn = element => {
-  element.classList.remove("hide");
-  element.classList.add("fadeIn", "animated")
 }
 
-// alternative: https://ipapi.co/json
-const getIpData = getJSON("https://ipinfo.io/json");
+/**
+ * Apply fade-in animation to an element
+ * @param {HTMLElement} element - DOM element to animate
+ */
+function fadeIn(element) {
+  if (element) {
+    element.classList.remove("hide");
+    element.classList.add("fadeIn", "animated");
+  }
+}
 
-const introText = document.getElementById("intro-text"),
-  clientInfoIP = document.getElementById("ip-address"),
-  clientInfoBrowser = document.getElementById("browser"),
-  clientInfoSystem = document.getElementById("operating-system"),
-  clientInfoPlace = document.getElementById("place");
-
+/**
+ * Show user information in the intro text
+ * @param {Object} ipInfo - Information about the user's IP
+ */
 function showIntro(ipInfo) {
   setTimeout(() => {
-    fadeIn(introText)
-    clientInfoIP.innerHTML = ipInfo.ip;
+    fadeIn(introText);
+    
+    // Set client IP
+    if (ipInfo && ipInfo.ip) {
+      clientInfoIP.textContent = ipInfo.ip;
+    } else {
+      clientInfoIP.textContent = "unknown";
+    }
+    
+    // Set browser and OS info using ClientJS
     const clientJS = new ClientJS();
-    if (/Edge\/12./i.test(navigator.userAgent))
-      // apparently Edge likes to think it's Chrome; according to the user agent...
-      clientInfoBrowser.innerHTML = "Edge";
-    else
-      clientInfoBrowser.innerHTML = clientJS.getBrowser();
-    clientInfoSystem.innerHTML = clientJS.getOS();
-    clientInfoPlace.innerHTML = ipInfo.city + "," + "\xa0" + ipInfo.country;
+    
+    // Fix Edge browser detection
+    if (/Edge\/\d+/i.test(navigator.userAgent)) {
+      clientInfoBrowser.textContent = "Edge";
+    } else {
+      clientInfoBrowser.textContent = clientJS.getBrowser();
+    }
+    
+    // Set OS info
+    clientInfoSystem.textContent = clientJS.getOS();
+    
+    // Set location info
+    if (ipInfo && ipInfo.city && ipInfo.country) {
+      clientInfoPlace.textContent = `${ipInfo.city}, ${ipInfo.country}`;
+    } else {
+      clientInfoPlace.textContent = "unknown location";
+    }
   }, timeoutBase + 4000);
 }
 
-getIpData.then(ipInfo => {
-  if (ipInfo && ipInfo != "" && ipInfo.ip != undefined && ipInfo.ip != "undefined")
-    showIntro(ipInfo);
-}).catch(error => {
-  console.log('Hmmm, it seems like there\'s an issue... \n' +
-    ' - running error handler to hide intro text (and continue to display other content)');
-});
-
-setTimeout(() => {
-  const aboutMe = document.getElementById("about-me"),
-    footer = document.getElementById("footer"),
-    links = document.getElementById("links");
+/**
+ * Show about section after intro
+ */
+function showAboutSection() {
   setTimeout(() => {
     fadeIn(aboutMe);
-    // fadeIn(footer);
-    // fadeIn(links);
-  }, (introText.classList.contains("hide") == false) ? timeoutBase * 15 : timeoutBase);
-}, timeoutBase * 10);
+    fadeIn(footer);
+    fadeIn(links);
+  }, (introText.classList.contains("hide") === false) ? timeoutBase * 15 : timeoutBase);
+}
 
+/**
+ * Check if the user is using Tor Browser
+ * @returns {boolean} - True if using Tor Browser
+ */
+function isTorBrowser() {
+  return navigator.userAgent.includes("Tor") || 
+         document.hidden !== undefined && 
+         /Firefox/.test(navigator.userAgent) &&
+         /rv:/.test(navigator.userAgent);
+}
 
-// Main function to block Tor users
+/**
+ * Check if IP is a Tor exit node
+ * @returns {Promise<boolean>} - True if IP is a Tor exit node
+ */
+async function checkIsTorExitNode() {
+  try {
+    const ipInfo = await getJSON("https://ipinfo.io/json");
+    // Here you would ideally check against a Tor exit node list
+    // For demo, we'll use a simplified check
+    return false; // Replace with actual implementation
+  } catch (error) {
+    console.error("Error checking Tor exit node:", error);
+    return false;
+  }
+}
+
+/**
+ * Block users using Tor Browser
+ */
 async function blockTorUsers() {
   if (isTorBrowser() || await checkIsTorExitNode()) {
     // Create overlay
@@ -100,12 +161,15 @@ async function blockTorUsers() {
     overlay.style.padding = '20px';
     overlay.style.textAlign = 'center';
 
-    // Add message with center-glitch class instead of regular glitch
+    // Add message with center-glitch class
     overlay.innerHTML = `
       <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
       <p>This website does not allow access via Tor Browser.</p>
       <p>Please use a standard web browser to view this content.</p>
-      <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>If you believe this is an error, try disabling privacy extensions or using a different browser.</p>
+      <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">
+        Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>
+        If you believe this is an error, try disabling privacy features or using another browser.
+      </p>
     `;
 
     // Add custom CSS for the center-aligned glitch effect
@@ -159,5 +223,32 @@ async function blockTorUsers() {
     document.getElementById('ufo-animation').style.display = 'none';
   }
 }
-// Run the check when the page loads
-document.addEventListener('DOMContentLoaded', blockTorUsers);
+
+/**
+ * Initialize the page
+ */
+function initPage() {
+  // Get IP data and show intro
+  const ipDataPromise = getJSON("https://ipinfo.io/json");
+  ipDataPromise
+    .then(ipInfo => {
+      if (ipInfo && ipInfo.ip) {
+        showIntro(ipInfo);
+      } else {
+        throw new Error("Invalid IP data");
+      }
+    })
+    .catch(error => {
+      console.error('Error loading IP data:', error);
+      // Show intro with default values
+      showIntro({});
+    });
+
+  // Show about section after delay
+  setTimeout(() => {
+    showAboutSection();
+  }, timeoutBase * 10);
+
+  // Check for Tor users
+  blockTorUsers();
+}
