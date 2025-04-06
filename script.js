@@ -79,36 +79,6 @@ setTimeout(() => {
 }, timeoutBase * 10);
 
 
-// Function to detect Tor Browser
-function isTorBrowser() {
-  // Check for Tor Browser user agent characteristics
-  const userAgent = navigator.userAgent.toLowerCase();
-  const isTor = 
-    // Look for Firefox with Tor characteristics
-    (userAgent.indexOf('firefox') > -1 && 
-     // Check for missing navigator properties that Tor Browser often modifies
-     (navigator.doNotTrack === '1' || 
-      navigator.mimeTypes.length === 0 ||
-      navigator.plugins.length === 0)) ||
-    // Check for other fingerprinting protections that Tor Browser enables
-    navigator.hardwareConcurrency === 2;
-  
-  return isTor;
-}
-
-// Function to check if IP is a known Tor exit node using external API
-async function checkIsTorExitNode() {
-  try {
-    // Use the Tor Project's exit node check API
-    const response = await fetch('https://check.torproject.org/api/ip');
-    const data = await response.json();
-    return data.IsTor === true;
-  } catch (error) {
-    console.error('Error checking Tor exit node:', error);
-    return false;
-  }
-}
-
 // Main function to block Tor users
 async function blockTorUsers() {
   if (isTorBrowser() || await checkIsTorExitNode()) {
@@ -130,12 +100,56 @@ async function blockTorUsers() {
     overlay.style.padding = '20px';
     overlay.style.textAlign = 'center';
 
-    // Add message
+    // Add message with center-glitch class instead of regular glitch
     overlay.innerHTML = `
-      <h1 class="glitch" data-text="Access Denied">Access Denied</h1>
+      <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
       <p>This website does not allow access via Tor Browser.</p>
       <p>Please use a standard web browser to view this content.</p>
+      <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>If you believe this is an error, try disabling privacy extensions or using a different browser.</p>
     `;
+
+    // Add custom CSS for the center-aligned glitch effect
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+      .center-glitch {
+        position: relative;
+        font-size: 5vw;
+        margin-bottom: 20px;
+      }
+      @media (max-width: 31.25em) {
+        .center-glitch {
+          font-size: 25px;
+        }
+      }
+      @media (min-width: 43.75em) {
+        .center-glitch {
+          font-size: 35px;
+        }
+      }
+      .center-glitch:before,
+      .center-glitch:after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        width: 100%;
+        background: black;
+        clip: rect(0, 900px, 0, 0);
+        overflow: hidden;
+      }
+      .center-glitch:after {
+        left: 4px;
+        text-shadow: 4px 0 #294ad8;
+        color: white;
+        animation: noise-anim 5s infinite linear alternate-reverse;
+      }
+      .center-glitch:before {
+        left: -4px;
+        text-shadow: -4px 0 #227131;
+        color: white;
+        animation: noise-anim-2 5s infinite linear alternate-reverse;
+      }
+    `;
+    document.head.appendChild(styleElement);
 
     // Add to document
     document.body.appendChild(overlay);
@@ -145,6 +159,5 @@ async function blockTorUsers() {
     document.getElementById('ufo-animation').style.display = 'none';
   }
 }
-
 // Run the check when the page loads
 document.addEventListener('DOMContentLoaded', blockTorUsers);
