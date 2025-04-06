@@ -1,12 +1,11 @@
 /**
- * Global constants and configurations
+ * script.js
+ * Updated: 2025-04-06
  */
+
 const timeoutBase = 450;
 let isAnimationComplete = false;
 
-/**
- * DOM elements
- */
 const headline = document.getElementById("main-heading");
 const introText = document.getElementById("intro-text");
 const clientInfoIP = document.getElementById("ip-address");
@@ -17,18 +16,12 @@ const aboutMe = document.getElementById("about-me");
 const footer = document.getElementById("footer");
 const links = document.getElementById("links");
 
-/**
- * Initialize animations and data loading
- */
 document.addEventListener('DOMContentLoaded', function() {
   initializeHeadline();
   loadClientData();
   checkForTor();
 });
 
-/**
- * Initialize the headline animation
- */
 function initializeHeadline() {
   setTimeout(() => {
     headline.classList.remove("hide");
@@ -36,9 +29,6 @@ function initializeHeadline() {
   }, timeoutBase + 1100);
 }
 
-/**
- * Load client data using the IP API
- */
 function loadClientData() {
   getIpData.then(ipInfo => {
     if (ipInfo && ipInfo !== "" && ipInfo.ip !== undefined && ipInfo.ip !== "undefined") {
@@ -50,11 +40,6 @@ function loadClientData() {
   });
 }
 
-/**
- * Utility function to fetch JSON data
- * @param {string} url - URL to fetch JSON from
- * @returns {Promise} - Promise with the JSON data
- */
 const getJSON = (url) => {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
@@ -77,33 +62,20 @@ const getJSON = (url) => {
   });
 };
 
-/**
- * Utility function to fade in elements
- * @param {HTMLElement} element - Element to fade in
- */
 const fadeIn = element => {
   element.classList.remove("hide");
   element.classList.add("fadeIn", "animated");
 }
 
-/**
- * Fetch IP data from API
- */
 const getIpData = getJSON("https://ipinfo.io/json");
 
-/**
- * Display intro text with client information
- * @param {Object} ipInfo - Information about client's IP
- */
 function showIntro(ipInfo) {
   setTimeout(() => {
     fadeIn(introText);
     
-    // Display client info
     clientInfoIP.innerHTML = ipInfo.ip;
     const clientJS = new ClientJS();
     
-    // Handle Edge browser detection
     if (/Edge\/12./i.test(navigator.userAgent)) {
       clientInfoBrowser.innerHTML = "Edge";
     } else {
@@ -113,41 +85,9 @@ function showIntro(ipInfo) {
     clientInfoSystem.innerHTML = clientJS.getOS();
     clientInfoPlace.innerHTML = ipInfo.city + "," + "\xa0" + ipInfo.country;
     
-    // Show the "I'm Nandu" text only after client info is displayed
     setTimeout(() => {
       fadeIn(aboutMe);
       
-      // Show footer and links after the "I'm Nandu" text
-      setTimeout(() => {
-        fadeIn(footer);
-        fadeIn(links);
-      }, timeoutBase * 3);
-      
-    }, 1500); // Small delay after client info appears
-    
-  }, timeoutBase + 4000);
-}
-
-/**
- * Show fallback content if IP data cannot be loaded
- */
-function showFallbackContent() {
-  console.log('Running fallback content due to error loading IP data');
-  
-  setTimeout(() => {
-    fadeIn(introText);
-    
-    // Replace the spans with generic text
-    clientInfoIP.innerHTML = "anonymous visitor";
-    clientInfoBrowser.innerHTML = "your browser";
-    clientInfoSystem.innerHTML = "your device";
-    clientInfoPlace.innerHTML = "somewhere in the world";
-    
-    // Show the "I'm Nandu" text after a delay
-    setTimeout(() => {
-      fadeIn(aboutMe);
-      
-      // Show footer and links after the "I'm Nandu" text
       setTimeout(() => {
         fadeIn(footer);
         fadeIn(links);
@@ -158,53 +98,151 @@ function showFallbackContent() {
   }, timeoutBase + 4000);
 }
 
-/**
- * Check if user is using Tor Browser
- * @returns {boolean} - True if user is using Tor
- */
-function isTorBrowser() {
-  // Check for common Tor Browser fingerprints
-  const userAgent = navigator.userAgent.toLowerCase();
-  return userAgent.includes('tor') || 
-         document.hidden !== undefined && 
-         navigator.doNotTrack === "1" && 
-         window.screenX === 0 && 
-         (window.screen.width === 1000 && window.screen.height === 900 ||
-          window.outerWidth === 1000 && window.outerHeight === 900);
+function showFallbackContent() {
+  setTimeout(() => {
+    fadeIn(introText);
+    
+    clientInfoIP.innerHTML = "anonymous visitor";
+    clientInfoBrowser.innerHTML = "your browser";
+    clientInfoSystem.innerHTML = "your device";
+    clientInfoPlace.innerHTML = "somewhere in the world";
+    
+    setTimeout(() => {
+      fadeIn(aboutMe);
+      
+      setTimeout(() => {
+        fadeIn(footer);
+        fadeIn(links);
+      }, timeoutBase * 3);
+      
+    }, 1500);
+    
+  }, timeoutBase + 4000);
 }
 
-/**
- * Check if IP address is a Tor exit node
- * @returns {Promise<boolean>} - True if IP is a Tor exit node
- */
-async function checkIsTorExitNode() {
+function isTorBrowser() {
   try {
-    const response = await fetch('https://check.torproject.org/exit-addresses');
-    if (response.ok) {
-      const text = await response.text();
-      const userIP = await getIpData.then(data => data.ip);
-      return text.includes(userIP);
+    const canvas = document.createElement('canvas');
+    const gl = canvas.getContext('webgl');
+    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+    const vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL);
+    const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+    
+    if (vendor === 'Mozilla' && renderer === 'Mozilla') {
+      return true;
     }
-  } catch (error) {
-    console.error('Error checking Tor exit nodes:', error);
+  } catch (e) {}
+  
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = 200;
+    canvas.height = 50;
+    const ctx = canvas.getContext('2d');
+    
+    ctx.font = '18px Arial';
+    ctx.fillText('TorBrowserCheck', 10, 30);
+    
+    const dataURL = canvas.toDataURL();
+    
+    const canvas2 = document.createElement('canvas');
+    canvas2.width = 200;
+    canvas2.height = 50;
+    const ctx2 = canvas2.getContext('2d');
+    ctx2.font = '18px Arial';
+    ctx2.fillText('TorBrowserCheck', 10, 30);
+    const dataURL2 = canvas2.toDataURL();
+    
+    if (dataURL === dataURL2 && dataURL.length > 0) {
+      return true;
+    }
+  } catch (e) {}
+  
+  const userAgent = navigator.userAgent;
+  
+  if (
+    (userAgent.includes('Firefox/') && !userAgent.includes('Chrome')) &&
+    navigator.doNotTrack === "1" &&
+    !('speechSynthesis' in window) &&
+    (navigator.plugins.length <= 3)
+  ) {
+    return true;
   }
+  
   return false;
 }
 
-/**
- * Main function to check and block Tor users
- */
+async function checkIsTorExitNode() {
+  try {
+    const ipData = await getIpData;
+    const userIP = ipData.ip;
+    
+    const response = await fetch(`https://check.torproject.org/api/exit-addresses`);
+    
+    if (response.ok) {
+      const text = await response.text();
+      const exitNodes = parseExitNodeAddresses(text);
+      
+      if (exitNodes.includes(userIP)) {
+        return true;
+      }
+    }
+    
+    const backupResponse = await fetch(`https://check.torproject.org/cgi-bin/TorBulkExitList.py?ip=1.1.1.1&port=443`);
+    
+    if (backupResponse.ok) {
+      const text = await backupResponse.text();
+      const exitNodes = text
+        .split('\n')
+        .filter(line => !line.startsWith('#') && line.trim() !== '')
+        .map(line => line.trim());
+      
+      if (exitNodes.includes(userIP)) {
+        return true;
+      }
+    }
+    
+    return false;
+  } catch (error) {
+    console.error('Error checking Tor exit nodes:', error);
+    return false;
+  }
+}
+
+function parseExitNodeAddresses(exitAddressesText) {
+  const exitNodes = [];
+  const lines = exitAddressesText.split('\n');
+  
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+    
+    if (line.startsWith('ExitAddress ')) {
+      const parts = line.split(' ');
+      if (parts.length >= 2) {
+        exitNodes.push(parts[1]);
+      }
+    }
+  }
+  
+  return exitNodes;
+}
+
 async function checkForTor() {
-  if (isTorBrowser() || await checkIsTorExitNode()) {
+  const results = await Promise.allSettled([
+    Promise.race([
+      checkIsTorExitNode(),
+      new Promise(resolve => setTimeout(() => resolve(false), 3000))
+    ]),
+    Promise.resolve(isTorBrowser())
+  ]);
+  
+  const isTorUser = results.some(result => result.status === 'fulfilled' && result.value === true);
+  
+  if (isTorUser) {
     displayTorBlockScreen();
   }
 }
 
-/**
- * Display blocking screen for Tor users
- */
 function displayTorBlockScreen() {
-  // Create overlay
   const overlay = document.createElement('div');
   overlay.style.position = 'fixed';
   overlay.style.top = '0';
@@ -222,15 +260,13 @@ function displayTorBlockScreen() {
   overlay.style.padding = '20px';
   overlay.style.textAlign = 'center';
 
-  // Add message with center-glitch class
   overlay.innerHTML = `
     <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
     <p>This website does not allow access via Tor Browser.</p>
     <p>Please use a standard web browser to view this content.</p>
-    <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>If you believe this is an error, try disabling privacy features or use a different browser.</p>
+    <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>If you believe this is an error, try disabling privacy features or using another browser.</p>
   `;
 
-  // Add custom CSS for the center-aligned glitch effect
   const styleElement = document.createElement('style');
   styleElement.textContent = `
     .center-glitch {
@@ -273,10 +309,7 @@ function displayTorBlockScreen() {
   `;
   document.head.appendChild(styleElement);
 
-  // Add to document
   document.body.appendChild(overlay);
-  
-  // Hide the main content
   document.getElementById('main-content').style.display = 'none';
   document.getElementById('ufo-animation').style.display = 'none';
 }
