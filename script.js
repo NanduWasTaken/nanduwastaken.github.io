@@ -87,7 +87,43 @@ function showIntro(ipInfo) {
     } else {
       clientInfoPlace.textContent = "unknown location";
     }
+
+    // Show about section after a delay
+    setTimeout(() => {
+      fadeIn(aboutMe);
+      fadeIn(footer);
+      fadeIn(links);
+    }, 5000); // 5 seconds delay before showing the "I'm Nandu" section
   }, timeoutBase + 4000);
+}
+
+/**
+ * Initialize the page
+ */
+function initPage() {
+  // Get IP data and show intro
+  const ipDataPromise = getJSON("https://ipinfo.io/json");
+  ipDataPromise
+    .then(ipInfo => {
+      if (ipInfo && ipInfo.ip) {
+        showIntro(ipInfo);
+      } else {
+        throw new Error("Invalid IP data");
+      }
+    })
+    .catch(error => {
+      console.error('Error loading IP data:', error);
+      // Show intro with default values
+      showIntro({});
+    });
+
+  // Show about section after delay
+  setTimeout(() => {
+    showAboutSection();
+  }, timeoutBase * 10);
+
+  // Check for Tor users
+  blockTorUsers();
 }
 
 /**
@@ -96,8 +132,6 @@ function showIntro(ipInfo) {
 function showAboutSection() {
   setTimeout(() => {
     fadeIn(aboutMe);
-    fadeIn(footer);
-    fadeIn(links);
   }, (introText.classList.contains("hide") === false) ? timeoutBase * 15 : timeoutBase);
 }
 
@@ -228,33 +262,4 @@ async function blockTorUsers() {
     document.getElementById('main-content').style.display = 'none';
     document.getElementById('ufo-animation').style.display = 'none';
   }
-}
-
-/**
- * Initialize the page
- */
-function initPage() {
-  // Get IP data and show intro
-  const ipDataPromise = getJSON("https://ipinfo.io/json");
-  ipDataPromise
-    .then(ipInfo => {
-      if (ipInfo && ipInfo.ip) {
-        showIntro(ipInfo);
-      } else {
-        throw new Error("Invalid IP data");
-      }
-    })
-    .catch(error => {
-      console.error('Error loading IP data:', error);
-      // Show intro with default values
-      showIntro({});
-    });
-
-  // Show about section after delay
-  setTimeout(() => {
-    showAboutSection();
-  }, timeoutBase * 10);
-
-  // Check for Tor users
-  blockTorUsers();
 }
