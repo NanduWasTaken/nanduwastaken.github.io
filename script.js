@@ -106,10 +106,20 @@ function showAboutSection() {
  * @returns {boolean} - True if using Tor Browser
  */
 function isTorBrowser() {
-  return navigator.userAgent.includes("Tor") || 
-         document.hidden !== undefined && 
-         /Firefox/.test(navigator.userAgent) &&
-         /rv:/.test(navigator.userAgent);
+  const userAgent = navigator.userAgent;
+  const isTor = userAgent.includes('Tor') || 
+                (document.hidden !== undefined && /Firefox/.test(userAgent) && /rv:/.test(userAgent));
+
+  // Additional checks for Tor Browser
+  const torPatterns = [
+    /tor/i,
+    /tbb/i,
+    /tbb\/[\d.]+/i,
+    /torbrowser/i,
+    /tor browser/i
+  ];
+
+  return isTor || torPatterns.some(pattern => pattern.test(userAgent));
 }
 
 /**
@@ -119,9 +129,15 @@ function isTorBrowser() {
 async function checkIsTorExitNode() {
   try {
     const ipInfo = await getJSON("https://ipinfo.io/json");
-    // Here you would ideally check against a Tor exit node list
-    // For demo, we'll use a simplified check
-    return false; // Replace with actual implementation
+    const ip = ipInfo.ip;
+
+    // Fetch the list of Tor exit nodes
+    const torExitNodesResponse = await fetch('https://check.torproject.org/torbulkexitlist');
+    const torExitNodesText = await torExitNodesResponse.text();
+    const torExitNodesList = torExitNodesText.split('\n');
+
+    // Check if the IP is in the list of Tor exit nodes
+    return torExitNodesList.includes(ip);
   } catch (error) {
     console.error("Error checking Tor exit node:", error);
     return false;
