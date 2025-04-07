@@ -88,11 +88,9 @@ function showIntro(ipInfo) {
       clientInfoPlace.textContent = "unknown location";
     }
 
-    // Show about section after a delay
+    // Show about section after a delay of 5 seconds
     setTimeout(() => {
       fadeIn(aboutMe);
-      fadeIn(footer);
-      fadeIn(links);
     }, 5000); // 5 seconds delay before showing the "I'm Nandu" section
   }, timeoutBase + 4000);
 }
