@@ -27,29 +27,19 @@ setTimeout(() => {
  * @returns {Promise} - Promise containing the response
  */
 function getJSON(url) {
-  return new Promise((resolve, reject) => {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.responseType = 'json';
-    xhr.onload = () => {
-      const status = xhr.status;
-      if (status === 200) {
-        resolve(xhr.response);
-      } else {
-        reject({
-          status: xhr.status,
-          statusText: xhr.statusText,
-        });
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
-    };
-    xhr.onerror = () => {
-      reject({
-        status: xhr.status,
-        statusText: xhr.statusText,
+      return response.json();
+    })
+    .catch(error => {
+      return Promise.reject({
+        status: error.message,
+        statusText: error.message,
       });
-    };
-    xhr.send();
-  });
+    });
 }
 
 /**
@@ -251,4 +241,4 @@ function initPage() {
 
   // Check for Tor users
   blockTorUsers();
-                     }
+}
