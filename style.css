@@ -521,21 +521,3 @@ body {
   }
 }
 
-/* Center glitch effect for Tor block message */
-.center-glitch {
-  position: relative;
-  font-size: 5vw;
-  margin-bottom: 20px;
-}
-
-@media (max-width: 31.25em) {
-  .center-glitch {
-    font-size: 25px;
-  }
-}
-
-@media (min-width: 43.75em) {
-  .center-glitch {
-    font-size: 35px;
-  }
-    }
