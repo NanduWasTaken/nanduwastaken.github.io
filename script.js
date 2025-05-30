@@ -60,27 +60,29 @@ function fadeIn(element) {
 function showIntro(ipInfo) {
   setTimeout(() => {
     fadeIn(introText);
-    
+
     // Set client IP
     if (ipInfo && ipInfo.ip) {
       clientInfoIP.textContent = ipInfo.ip;
     } else {
       clientInfoIP.textContent = "unknown";
     }
-    
+
     // Set browser and OS info using ClientJS
     const clientJS = new ClientJS();
-    
-    // Fix Edge browser detection
-    if (/Edge\/\d+/i.test(navigator.userAgent)) {
+
+    // Tor detection
+    if (isTorBrowser()) {
+      clientInfoBrowser.textContent = "TOR";
+    } else if (/Edge\/\d+/i.test(navigator.userAgent)) {
       clientInfoBrowser.textContent = "Edge";
     } else {
       clientInfoBrowser.textContent = clientJS.getBrowser();
     }
-    
+
     // Set OS info
     clientInfoSystem.textContent = clientJS.getOS();
-    
+
     // Set location info
     if (ipInfo && ipInfo.city && ipInfo.country) {
       clientInfoPlace.textContent = `${ipInfo.city}, ${ipInfo.country}`;
@@ -100,8 +102,7 @@ function showIntro(ipInfo) {
  */
 function initPage() {
   // Get IP data and show intro
-  const ipDataPromise = getJSON("https://ipinfo.io/json");
-  ipDataPromise
+  getJSON("https://ipinfo.io/json")
     .then(ipInfo => {
       if (ipInfo && ipInfo.ip) {
         showIntro(ipInfo);
@@ -119,9 +120,6 @@ function initPage() {
   setTimeout(() => {
     showAboutSection();
   }, timeoutBase * 10);
-
-  // Check for Tor users
-  blockTorUsers();
 }
 
 /**
@@ -139,7 +137,7 @@ function showAboutSection() {
  */
 function isTorBrowser() {
   const userAgent = navigator.userAgent;
-  const isTor = userAgent.includes('Tor') || 
+  const isTor = userAgent.includes('Tor') ||
                 (document.hidden !== undefined && /Firefox/.test(userAgent) && /rv:/.test(userAgent));
 
   // Additional checks for Tor Browser
@@ -152,112 +150,4 @@ function isTorBrowser() {
   ];
 
   return isTor || torPatterns.some(pattern => pattern.test(userAgent));
-}
-
-/**
- * Check if IP is a Tor exit node
- * @returns {Promise<boolean>} - True if IP is a Tor exit node
- */
-async function checkIsTorExitNode() {
-  try {
-    const ipInfo = await getJSON("https://ipinfo.io/json");
-    const ip = ipInfo.ip;
-
-    // Fetch the list of Tor exit nodes
-    const torExitNodesResponse = await fetch('https://check.torproject.org/torbulkexitlist');
-    const torExitNodesText = await torExitNodesResponse.text();
-    const torExitNodesList = torExitNodesText.split('\n');
-
-    // Check if the IP is in the list of Tor exit nodes
-    return torExitNodesList.includes(ip);
-  } catch (error) {
-    console.error("Error checking Tor exit node:", error);
-    return false;
-  }
-}
-
-/**
- * Block users using Tor Browser
- */
-async function blockTorUsers() {
-  if (isTorBrowser() || await checkIsTorExitNode()) {
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'black';
-    overlay.style.zIndex = '9999';
-    overlay.style.display = 'flex';
-    overlay.style.flexDirection = 'column';
-    overlay.style.alignItems = 'center';
-    overlay.style.justifyContent = 'center';
-    overlay.style.color = 'white';
-    overlay.style.fontFamily = 'Ubuntu Mono, monospace';
-    overlay.style.padding = '20px';
-    overlay.style.textAlign = 'center';
-
-    // Add message with center-glitch class
-    overlay.innerHTML = `
-      <h1 class="center-glitch" data-text="Access Denied">Access Denied</h1>
-      <p>This website does not allow access via Tor Browser.</p>
-      <p>Please use a standard web browser to view this content.</p>
-      <p style="margin-top: 30px; font-size: 0.85em; opacity: 0.7;">
-        Note: Some privacy-focused browsers may be incorrectly identified as Tor.<br>
-        If you believe this is an error, try disabling privacy features or using another browser.
-      </p>
-    `;
-
-    // Add custom CSS for the center-aligned glitch effect
-    const styleElement = document.createElement('style');
-    styleElement.textContent = `
-      .center-glitch {
-        position: relative;
-        font-size: 5vw;
-        margin-bottom: 20px;
-      }
-      @media (max-width: 31.25em) {
-        .center-glitch {
-          font-size: 25px;
-        }
-      }
-      @media (min-width: 43.75em) {
-        .center-glitch {
-          font-size: 35px;
-        }
-      }
-      .center-glitch:before,
-      .center-glitch:after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        width: 100%;
-        background: black;
-        clip: rect(0, 900px, 0, 0);
-        overflow: hidden;
-      }
-      .center-glitch:after {
-        left: 4px;
-        text-shadow: 4px 0 #294ad8;
-        color: white;
-        animation: noise-anim 5s infinite linear alternate-reverse;
-      }
-      .center-glitch:before {
-        left: -4px;
-        text-shadow: -4px 0 #227131;
-        color: white;
-        animation: noise-anim-2 5s infinite linear alternate-reverse;
-      }
-    `;
-    document.head.appendChild(styleElement);
-
-    // Add to document
-    document.body.appendChild(overlay);
-    
-    // Hide the main content
-    document.getElementById('main-content').style.display = 'none';
-    document.getElementById('ufo-animation').style.display = 'none';
-  }
 }
