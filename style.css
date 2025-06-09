@@ -101,7 +101,7 @@ body {
   transition: 0.3s;
 }
 
-#intro > p {
+#intro>p {
   margin-left: 5vw;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -109,7 +109,7 @@ body {
 }
 
 @media (max-width: 420px) {
-  #intro > p {
+  #intro>p {
     line-height: 1.5;
   }
 }
@@ -134,7 +134,7 @@ body {
   .client-info {
     padding: 2px 5px;
   }
-  
+
   .line-break-intro {
     display: none;
   }
@@ -204,13 +204,13 @@ body {
   }
 }
 
-#links > p > a {
+#links>p>a {
   transition: 0.3s;
   color: #969cad;
   text-decoration: none;
 }
 
-#links > p > a:hover {
+#links>p>a:hover {
   color: var(--text-color);
 }
 
@@ -246,54 +246,71 @@ body {
   0% {
     clip: rect(87px, 9999px, 19px, 0);
   }
+
   5.8823529412% {
     clip: rect(68px, 9999px, 9px, 0);
   }
+
   11.7647058824% {
     clip: rect(13px, 9999px, 71px, 0);
   }
+
   17.6470588235% {
     clip: rect(67px, 9999px, 68px, 0);
   }
+
   23.5294117647% {
     clip: rect(17px, 9999px, 73px, 0);
   }
+
   29.4117647059% {
     clip: rect(21px, 9999px, 96px, 0);
   }
+
   35.2941176471% {
     clip: rect(80px, 9999px, 79px, 0);
   }
+
   41.1764705882% {
     clip: rect(69px, 9999px, 35px, 0);
   }
+
   47.0588235294% {
     clip: rect(41px, 9999px, 66px, 0);
   }
+
   52.9411764706% {
     clip: rect(31px, 9999px, 22px, 0);
   }
+
   58.8235294118% {
     clip: rect(95px, 9999px, 1px, 0);
   }
+
   64.7058823529% {
     clip: rect(73px, 9999px, 18px, 0);
   }
+
   70.5882352941% {
     clip: rect(47px, 9999px, 46px, 0);
   }
+
   76.4705882353% {
     clip: rect(20px, 9999px, 49px, 0);
   }
+
   82.3529411765% {
     clip: rect(67px, 9999px, 16px, 0);
   }
+
   88.2352941176% {
     clip: rect(100px, 9999px, 73px, 0);
   }
+
   94.1176470588% {
     clip: rect(35px, 9999px, 80px, 0);
   }
+
   100% {
     clip: rect(41px, 9999px, 100px, 0);
   }
@@ -315,54 +332,71 @@ body {
   0% {
     clip: rect(76px, 9999px, 37px, 0);
   }
+
   5.8823529412% {
     clip: rect(66px, 9999px, 92px, 0);
   }
+
   11.7647058824% {
     clip: rect(22px, 9999px, 6px, 0);
   }
+
   17.6470588235% {
     clip: rect(24px, 9999px, 11px, 0);
   }
+
   23.5294117647% {
     clip: rect(44px, 9999px, 21px, 0);
   }
+
   29.4117647059% {
     clip: rect(29px, 9999px, 96px, 0);
   }
+
   35.2941176471% {
     clip: rect(4px, 9999px, 86px, 0);
   }
+
   41.1764705882% {
     clip: rect(33px, 9999px, 73px, 0);
   }
+
   47.0588235294% {
     clip: rect(18px, 9999px, 36px, 0);
   }
+
   52.9411764706% {
     clip: rect(58px, 9999px, 55px, 0);
   }
+
   58.8235294118% {
     clip: rect(100px, 9999px, 1px, 0);
   }
+
   64.7058823529% {
     clip: rect(96px, 9999px, 72px, 0);
   }
+
   70.5882352941% {
     clip: rect(16px, 9999px, 59px, 0);
   }
+
   76.4705882353% {
     clip: rect(36px, 9999px, 90px, 0);
   }
+
   82.3529411765% {
     clip: rect(85px, 9999px, 38px, 0);
   }
+
   88.2352941176% {
     clip: rect(63px, 9999px, 82px, 0);
   }
+
   94.1176470588% {
     clip: rect(45px, 9999px, 47px, 0);
   }
+
   100% {
     clip: rect(57px, 9999px, 22px, 0);
   }
@@ -381,6 +415,7 @@ body {
 }
 
 @media (max-width: 300px) {
+
   .glitch:before,
   .glitch:after {
     animation: none;
@@ -393,6 +428,7 @@ body {
     opacity: 0;
     transform: translate3d(0, -100%, 0);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -407,6 +443,7 @@ body {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -495,11 +532,13 @@ body {
 }
 
 @keyframes zoom {
+
   0%,
   100% {
     background-color: black;
     box-shadow: 0 0 0 rgba(255, 255, 255, 0);
   }
+
   50% {
     background-color: white;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
@@ -521,3 +560,36 @@ body {
   }
 }
 
+/* Rickroll Animation */
+/* Center container */
+#rickroll-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  pointer-events: none;
+  /* Does not block user interaction */
+}
+
+/* Image and invert animation */
+#rickroll-image {
+  width: 200px;
+  height: auto;
+  animation: invertEffect 1s infinite;
+}
+
+/* Keyframes for inverting */
+@keyframes invertEffect {
+  0% {
+    filter: invert(0%);
+  }
+
+  50% {
+    filter: invert(100%);
+  }
+
+  100% {
+    filter: invert(0%);
+  }
+}
