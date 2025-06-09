@@ -63,7 +63,8 @@ function showIntro(ipInfo) {
 
     // Set client IP
     if (ipInfo && ipInfo.ip) {
-      clientInfoIP.textContent = ipInfo.ip;
+      // clientInfoPlace.textContent =  ipInfo.ip;
+      clientInfoPlace.textContent = '9.9.9.9'
     } else {
       clientInfoIP.textContent = "unknown";
     }
@@ -85,7 +86,8 @@ function showIntro(ipInfo) {
 
     // Set location info
     if (ipInfo && ipInfo.city && ipInfo.country) {
-      clientInfoPlace.textContent = `${ipInfo.city}, ${ipInfo.country}`;
+      // clientInfoPlace.textContent = `${ipInfo.city}, ${ipInfo.country}`;
+      clientInfoPlace.textContent = 'RickRoll by, Rick Astley'
     } else {
       clientInfoPlace.textContent = "unknown location";
     }
