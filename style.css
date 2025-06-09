@@ -566,30 +566,61 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 20;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   pointer-events: none;
-  /* Does not block user interaction */
 }
 
-/* Image and invert animation */
+/* Rickroll image styling */
 #rickroll-image {
   width: 200px;
+  max-width: 90vw;
   height: auto;
-  animation: invertEffect 1s infinite;
+  animation: mirrorEffect 900ms infinite steps(2, end);
+  border: 4px solid #fff;
+  border-radius: 12px;
+  box-sizing: border-box;
 }
 
-/* Keyframes for inverting */
-@keyframes invertEffect {
+/* On small screens, move image to bottom above footer */
+@media (max-width: 700px) {
+  #rickroll-container {
+    position: fixed;
+    left: 50%;
+    bottom: 60px;  
+    top: auto;
+    transform: translateX(-50%);
+    margin: 0;
+    width: 100vw;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 5; 
+    pointer-events: none;
+  }
+  #rickroll-image {
+    width: 120px;
+    max-width: 95vw;
+    border-width: 2px;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+}
+
+/* Keyframes for instant mirroring */
+@keyframes mirrorEffect {
   0% {
-    filter: invert(0%);
+    transform: scaleX(1);
   }
-
+  49.999% {
+    transform: scaleX(1);
+  }
   50% {
-    filter: invert(100%);
+    transform: scaleX(-1);
   }
-
   100% {
-    filter: invert(0%);
+    transform: scaleX(-1);
   }
 }
